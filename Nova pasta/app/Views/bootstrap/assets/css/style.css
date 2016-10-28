@@ -1,0 +1,28 @@
+* {
+    box-sizing:border-box;
+}
+.listing {
+    display:inline-block;
+    width:500px;
+    background:#f9f9f9;
+    border:1px solid #e1e1e1;
+}
+.listing > .content-block {
+    display:inline-block;
+    width:100%;
+}
+.listing > .content-block a.title {
+    cursor:pointer;
+    display:inline-block;
+    width:100%;
+    padding:12px 8px;
+    background:#333;
+    color:#fff;
+}
+.listing > .content-block .content-desc {
+    display:none;
+    background:#fff;
+    width:100%;
+    margin:20px;
+    color:#666;
+}
