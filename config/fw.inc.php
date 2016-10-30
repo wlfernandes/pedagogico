@@ -21,6 +21,6 @@ define('TPL','/app/Views/');
 define('DB_HOST','localhost'); # Endereço do servidor
 define('DB_TYPE','mysql'); # Tipo de Banco de dados
 define('DB_USER','root'); # usuário do banco de dados
-define('DB_PASS','weeke'); # Senha para o usuário
-define('DB_NAME','aluno'); # Banco onde a apliação irá trabalhar
+define('DB_PASS',''); # Senha para o usuário
+define('DB_NAME','novo_banco'); # Banco onde a apliação irá trabalhar
 define('DB_PORT','3306'); # Porta do mysql
