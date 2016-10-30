@@ -1,0 +1,70 @@
+<?= $this->render('header'); ?>
+
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <aside id="sidebar" class="col-md-3">
+                    <?= $this->render('aside'); ?>
+                </aside><!--aside//-->
+
+                <main id="conteudo" class="col-md-9">
+                    <div class="main-content">
+                       <div class="panel panel-default">
+                           <div class="panel-heading">
+                               <h4>Alunos</h4>
+                           </div>
+                           <div class="panel-body">
+                               <table class="table">
+                                   <caption>
+                                       <span class="pull-left">Listando alunos</span>
+                                       <a class="btn btn-success pull-right" href="<?= BASE_ADM ?>/alunos/salvar">
+                                           <i class="glyphicon glyphicon-plus-sign"></i> Adicionar
+                                       </a>
+                                   </caption>
+                                   <thead>
+                                   <tr>
+                                       <th>#</th>
+                                       <th>Nome</th>
+                                       <th>Email</th>
+                                       <th>Telefone</th>
+                                       <th>Nascimento</th>
+                                       <th></th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                                   <?php
+                                   foreach($data->all() as $obj):
+                                       $s = !$obj->status ? ['danger','Inativo'] : ['success','Ativo'];
+                                       ?>
+                                   <tr>
+                                       <td><?=$obj->id?></td>
+                                       <td><?=$obj->nome?></td>
+                                       <td><?=$obj->email?></td>
+                                       <td><?=$obj->telefone?></td>
+                                       <td><?=date('d/m/Y',strtotime($obj->dataNascimento))?></td>
+                                       <td class="btn-actions">
+                                           <div class="btn-group btn-group-xs pull-right">
+                                               <a class="btn btn-primary" href="<?= BASE_ADM ?>/alunos/editar/<?=$obj->id?>">
+                                                  <span class="glyphicon glyphicon-edit"></span> Editar
+                                               </a>
+                                               <a class="btn btn-danger" href="<?= BASE_ADM ?>/alunos/remover/<?=$obj->id?>">
+                                                   <span class="glyphicon glyphicon-trash"></span> Remover
+                                               </a>
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <?php endforeach; ?>
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                    </div>
+                </main><!--//main-->
+
+            </div>
+        </div>
+    </div><!--//#content-->
+
+
+<?= $this->render('footer'); ?>

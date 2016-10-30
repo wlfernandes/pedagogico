@@ -1,0 +1,80 @@
+<?= $this->render('header'); ?>
+
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <aside id="sidebar" class="col-md-3">
+                    <?= $this->render('aside'); ?>
+                </aside><!--aside//-->
+
+                <main id="conteudo" class="col-md-9">
+                    <div class="main-content">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>Alunos</h4>
+                            </div>
+                            <div class="panel-body save-item">
+                               <h3><i class="glyphicon glyphicon-plus-sign"></i> Atualizar registro</h3>
+                                <hr>
+
+                                <form class="form-horizontal" method="post">
+                                    <div class="form-group">
+                                        <label for="nome" class="col-sm-2 control-label">Nome</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="<?=$data['aluno']->nome?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<?=$data['aluno']->email?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefone" class="col-sm-2 control-label">Telefone</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" value="<?=$data['aluno']->telefone?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nascimento" class="col-sm-2 control-label">Nascimento</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" id="nascimento" name="dataNascimento" class="form-control" placeholder="Data de Nascimento" value="<?=date('d/m/Y',strtotime($data['aluno']->dataNascimento))?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="turmas" class="col-sm-2 control-label">Turmas</label>
+                                        <div class="col-sm-10">
+                                            <select name="Turmas_id" id="turmas" class="form-control">
+                                                <?php
+                                                    foreach($data['turmas'] as $turma)
+                                                    {
+                                                        echo '<option value="'.$turma->id.'"';
+                                                        if($turma->id==$data['aluno']->Turmas_id)
+                                                            echo ' selected';
+                                                        echo '>'.$turma->nome.'</option>';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-success">
+                                              <i class="glyphicon glyphicon-save"></i>  Salvar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </main><!--//main-->
+
+            </div>
+        </div>
+    </div><!--//#content-->
+
+<?= $this->render('footer'); ?>

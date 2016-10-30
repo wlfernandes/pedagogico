@@ -1,0 +1,76 @@
+<?= $this->render('header'); ?>
+
+    <div id="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <aside id="sidebar" class="col-md-3">
+                    <?= $this->render('aside'); ?>
+                </aside><!--aside//-->
+
+                <main id="conteudo" class="col-md-9">
+                    <div class="main-content">
+                       <div class="panel panel-default">
+                           <div class="panel-heading">
+                               <h4>Usuários</h4>
+                           </div>
+                           <div class="panel-body">
+                               <table class="table">
+                                   <caption>
+                                       <span class="pull-left">Listando usuários</span>
+                                       <a class="btn btn-success pull-right" href="<?= BASE_ADM ?>/usuarios/salvar">
+                                           <i class="glyphicon glyphicon-plus-sign"></i> Adicionar
+                                       </a>
+                                   </caption>
+                                   <thead>
+                                   <tr>
+                                       <th>#</th>
+                                       <th>Nome</th>
+                                       <th>Email</th>
+                                       <th>Tipo</th>
+                                       <th>Status</th>
+                                       <th>Cadastro</th>
+                                       <th></th>
+                                   </tr>
+                                   </thead>
+                                   <tbody>
+                                   <?php
+                                   foreach($data->all() as $obj):
+                                       $s = !$obj->status ? ['danger','Inativo'] : ['success','Ativo'];
+                                       ?>
+                                   <tr>
+                                       <td><?=$obj->id?></td>
+                                       <td><?=$obj->nome?></td>
+                                       <td><?=$obj->email?></td>
+                                       <td>Administrador</td>
+                                       <td>
+                                           <a href="<?= BASE_ADM ?>/usuarios/status/<?=$obj->id?>">
+                                               <span class="label label-<?=$s[0]?>"><?=$s[1]?></span>
+                                           </a>
+                                       </td>
+                                       <td><?=date('d/m/Y',strtotime($obj->data))?></td>
+                                       <td class="btn-actions">
+                                           <div class="btn-group btn-group-xs pull-right">
+                                               <a class="btn btn-primary" href="<?= BASE_ADM ?>/usuarios/editar/<?=$obj->id?>">
+                                                  <span class="glyphicon glyphicon-edit"></span> Editar
+                                               </a>
+                                               <a class="btn btn-danger" href="<?= BASE_ADM ?>/usuarios/remover/<?=$obj->id?>">
+                                                   <span class="glyphicon glyphicon-trash"></span> Remover
+                                               </a>
+                                           </div>
+                                       </td>
+                                   </tr>
+                                   <?php endforeach; ?>
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                    </div>
+                </main><!--//main-->
+
+            </div>
+        </div>
+    </div><!--//#content-->
+
+
+<?= $this->render('footer'); ?>

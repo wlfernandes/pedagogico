@@ -1,0 +1,10 @@
+#content{
+    width: 100%;
+    position: relative;
+    margin: 1em 0;
+}
+#sidebar .side-content{background-color: #F5F5F5;}
+
+.save-item > h3{
+    margin: 1em 0;
+}
